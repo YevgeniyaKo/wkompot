@@ -1,17 +1,16 @@
+import LoginPage from '../pages/login.page';
+import ProfilePage from '../pages/profile.page';
+
 describe('Auth', function() {
+    beforeEach(async function() {
+        await LoginPage.open();
+    });
     it('Successful log in', async function() {
-        await browser.url('/user/login');
-        await expect($('.login-form-button'))
+
+        await expect(LoginPage.buttonSubmit)
             .toBeDisabled();
-        await $('[qa-id="email"]')
-            .setValue('iva.ko@gmail.com');
-        await $('[qa-id="password"]')
-            .setValue('Basket13');
-        await expect($('.login-form-button'))
-            .toBeEnabled();
-        await $('.login-form-button')
-            .click();
-        await expect($('img[alt="avatarIcon"]'))
+        await LoginPage.login('iva.ko@gmail.com', 'Basket13' );
+        await expect(ProfilePage.iconUser)
             .toBeDisplayed();
     });
 });
