@@ -9,7 +9,7 @@ describe('Auth', function() {
 
         await expect(LoginPage.buttonSubmit)
             .toBeDisabled();
-        await LoginPage.login('iva.ko@gmail.com', 'Basket13' );
+        await LoginPage.login(process.env.LOGIN, process.env.PASSWORD);
         await expect(ProfilePage.iconUser)
             .toBeDisplayed();
     });
