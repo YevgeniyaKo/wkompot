@@ -5,8 +5,8 @@ describe('Auth', function() {
     beforeEach(async function() {
         await LoginPage.open();
     });
-    it('Successful log in', async function() {
 
+    it('Successful log in', async function() {
         await expect(LoginPage.buttonSubmit)
             .toBeDisabled();
         await LoginPage.login(process.env.LOGIN, process.env.PASSWORD);

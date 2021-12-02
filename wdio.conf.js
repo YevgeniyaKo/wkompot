@@ -17,7 +17,7 @@ exports.config = {
     baseUrl: process.env.BASE_URL,
 
     waitforTimeout: 10000,
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 30000,
     connectionRetryCount: 1,
 
     services: ['devtools'],
