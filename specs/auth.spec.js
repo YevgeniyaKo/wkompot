@@ -15,12 +15,12 @@ describe('Auth', function() {
     });
 
     it('Log in attempt with non-registered email', async function() {
-        await LoginPage.login('testinvalid@example.com', 'testinvalid' );
+        await LoginPage.login('testinvalid@example.com', 'testinvalid');
         await expect(LoginPage.notification).toHaveText('Email is not registered');
     });
 
     it('Log in attempt with invalid password', async function() {
-        await LoginPage.login('iva.ko@gmail.com', 'testinvalid' );
+        await LoginPage.login(process.env.LOGIN, 'testinvalid');
         await expect(LoginPage.notification).toHaveText('Incorrect password');
     });
 
@@ -28,9 +28,8 @@ describe('Auth', function() {
         await LoginPage.inputUsername.setValue('test');
         await LoginPage.inputUsername.smartClear();
         await expect(LoginPage.loginError).toHaveText('Required');
-        await LoginPage.inputUsername.setValue('test');
-        await LoginPage.inputUsername.smartClear();
+        await LoginPage.inputPassword.setValue('test');
+        await LoginPage.inputPassword.smartClear();
         await expect(LoginPage.passwordError).toHaveText('Required');
-
     });
 });
