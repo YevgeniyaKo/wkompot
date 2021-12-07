@@ -13,7 +13,7 @@ describe('Client', function() {
         email = faker.internet.email();
     });
 
-    it('creation', async function() {
+    it.only('creation', async function() {
         await ClientsPage.createClient.click();
         await expect(ClientsPage.clientCreation.buttonSave).toBeDisabled();
         await ClientsPage.clientCreation.firstName.setValue(faker.name.firstName('male'));
@@ -24,7 +24,7 @@ describe('Client', function() {
         await expect(ClientsPage.getItemByEmail(email)).toBeDisplayed();
     });
 
-    it.skip('deletion', async function() {
+    it('deletion', async function() {
         await ClientsPage.deleteClient(email);
         await expect(ClientsPage.getItemByEmail(email)).not.toBeExisting();
     });
